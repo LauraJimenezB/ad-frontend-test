@@ -1,5 +1,57 @@
-import { getGames, getGenres } from "@/services/gameService";
-import { Game } from "@/types/game";
+import { getGames } from "@/services/gameService";
+import { GamesResponse } from "@/types/game";
+
+const mockFilteredGamesResponse: GamesResponse = {
+  games: [
+    {
+      id: "1",
+      name: "Fortnite",
+      description: "BR game",
+      price: 0,
+      genre: "Action",
+      image: "/fortnite.jpg",
+      isNew: true,
+    },
+  ],
+  currentPage: 1,
+  totalPages: 1,
+  availableFilters: ["Action", "Shooter"],
+};
+
+const mockAllGamesResponse: GamesResponse = {
+  games: [
+    {
+      id: "1",
+      name: "Fortnite",
+      description: "BR game",
+      price: 0,
+      genre: "Action",
+      image: "/fortnite.jpg",
+      isNew: true,
+    },
+    {
+      id: "2",
+      name: "Apex",
+      description: "Shooter",
+      price: 0,
+      genre: "Shooter",
+      image: "/apex.jpg",
+      isNew: true,
+    },
+    {
+      id: "3",
+      name: "COD",
+      description: "Shooter",
+      price: 0,
+      genre: "Shooter",
+      image: "/cod.jpg",
+      isNew: false,
+    },
+  ],
+  currentPage: 1,
+  totalPages: 1,
+  availableFilters: ["Action", "Shooter"],
+};
 
 describe("gameService", () => {
   beforeEach(() => {
@@ -7,98 +59,46 @@ describe("gameService", () => {
   });
 
   it("fetches games without genre filter", async () => {
-    const mockGames: Game[] = [
-      {
-        id: "1",
-        name: "Fortnite",
-        description: "BR game",
-        price: 0,
-        genre: "Battle Royale",
-        image: "/fortnite.jpg",
-        isNew: true,
-      },
-    ];
-
     global.fetch = jest.fn().mockResolvedValue({
       ok: true,
-      json: async () => mockGames,
+      json: async () => mockAllGamesResponse,
     }) as any;
 
     const result = await getGames(undefined, 1);
 
     expect(fetch).toHaveBeenCalledWith(
       expect.stringContaining("/games?page=1"),
-      expect.any(Object),
+      expect.any(Object)
     );
-    expect(result).toEqual(mockGames);
+    expect(result).toEqual(mockAllGamesResponse);
   });
 
   it("fetches games with genre filter", async () => {
-    const mockGames: Game[] = [
-      {
-        id: "2",
-        name: "Apex Legends",
-        description: "Shooter",
-        price: 0,
-        genre: "Shooter",
-        image: "/apex.jpg",
-        isNew: false,
-      },
-    ];
-
     global.fetch = jest.fn().mockResolvedValue({
       ok: true,
-      json: async () => mockGames,
+      json: async () => mockFilteredGamesResponse,
     }) as any;
 
-    const result = await getGames("Shooter", 2);
+    const result = await getGames("Action", 2);
 
     expect(fetch).toHaveBeenCalledWith(
-      expect.stringContaining("genre=Shooter"),
-      expect.any(Object),
+      expect.stringContaining("genre=Action"),
+      expect.any(Object)
     );
-    expect(result[0].name).toBe("Apex Legends");
+    expect(result.games[0].name).toBe("Fortnite");
   });
 
-  it("derives unique genres from games", async () => {
-    const mockGames: Game[] = [
-      {
-        id: "1",
-        name: "Fortnite",
-        description: "BR",
-        price: 0,
-        genre: "Battle Royale",
-        image: "/fortnite.jpg",
-        isNew: false,
-      },
-      {
-        id: "2",
-        name: "Apex",
-        description: "Shooter",
-        price: 0,
-        genre: "Shooter",
-        image: "/apex.jpg",
-        isNew: true,
-      },
-      {
-        id: "3",
-        name: "COD",
-        description: "Shooter",
-        price: 0,
-        genre: "Shooter",
-        image: "/cod.jpg",
-        isNew: false,
-      },
-    ];
-
+  it("fetches available genres", async () => {
     global.fetch = jest.fn().mockResolvedValue({
       ok: true,
-      json: async () => mockGames,
+      json: async () => mockAllGamesResponse,
     }) as any;
 
-    const genres = await getGenres();
+    const response = await getGames();
 
-    expect(genres).toEqual(["Battle Royale", "Shooter"]);
+    const genres = response.availableFilters;
+
+    expect(genres).toEqual(["Action", "Shooter"]);
   });
 
   it("throws an error if fetch fails", async () => {
