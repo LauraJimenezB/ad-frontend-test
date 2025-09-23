@@ -6,3 +6,19 @@ html,
 body {
   overscroll-behavior-y: none;
 }
+
+@layer components {
+  section {
+    @apply w-full border-b px-20 py-8 bg-white;
+  }
+}
+
+@layer utilities {
+  .text-selected {
+    @apply font-semibold text-gray-900;
+  }
+
+  .text-unselected {
+    @apply text-gray-700;
+  }
+}

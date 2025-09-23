@@ -1,7 +1,17 @@
-export default async function Home() {
+import { FilterSection } from "@/components/filter-section";
+import { getGames } from "@/services/gameService";
+
+type Search = { genre?: string; page?: string };
+
+export default async function Home({ searchParams }: { searchParams: Search }) {
+  const genre = searchParams.genre;
+  const page = Number(searchParams.page) || 1;
+
+  const gamesResponse = await getGames(genre, page);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 font-bold text-4xl text-blue-600">
-      Hello, world!
+    <main className="flex flex-col items-center justify-between text-md">
+      <FilterSection genres={gamesResponse.availableFilters} />
     </main>
   );
 }
