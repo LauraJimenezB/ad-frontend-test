@@ -13,9 +13,9 @@ const OrderSummary = () => {
         <h2 className="order-title">Order Summary</h2>
         <span className="text-sm text-gray-500">{itemsCount} items</span>
         <div className="order-list">
-          {items?.map((item) => {
+          {items?.map((item, i) => {
             return (
-              <div className="flex justify-between mb-3 text-gray-600">
+              <div className="flex justify-between mb-3 text-gray-600" key={i}>
                 <span>{item.name}</span>
                 <span>${item.price.toFixed(2)}</span>
               </div>
