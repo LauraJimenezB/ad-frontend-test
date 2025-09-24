@@ -1,5 +1,5 @@
-import { FilterSection } from "@/components/filter-section";
-import { GameCatalog } from "@/components/game-catalog";
+import { FilterSection } from "@/components/home/filter-section";
+import { GameCatalog } from "@/components/home/game-catalog";
 import { getGames } from "@/services/gameService";
 
 type Search = { genre?: string; page?: string };
