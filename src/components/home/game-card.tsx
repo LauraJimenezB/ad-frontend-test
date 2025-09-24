@@ -36,7 +36,13 @@ const GameCard = ({ game }: GameCardProps) => {
         </div>
         <button
           className="btn text-xs"
+          aria-label={
+            inCart
+              ? `Remove ${game.name} from cart`
+              : `Add ${game.name} to cart`
+          }
           onClick={() => (inCart ? removeItem(game.id) : addToCart(game))}
+          test-id="add-to-cart"
         >
           {inCart ? "REMOVE" : "ADD TO CART"}
         </button>
