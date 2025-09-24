@@ -25,9 +25,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  // Sync to localStorage
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(items));
+    if (items.length > 0) {
+      localStorage.setItem("cart", JSON.stringify(items));
+    } else {
+      localStorage.removeItem("cart");
+    }
   }, [items]);
 
   const addToCart = (game: Game) => {
