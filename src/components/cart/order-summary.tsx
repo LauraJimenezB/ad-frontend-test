@@ -28,7 +28,7 @@ const OrderSummary = () => {
         </div>
       </div>
       <button
-        className="w-full btn-primary mt-6 bg-secondary-dark"
+        className="w-full btn-primary mt-6 bg-secondary-dark hover:bg-gray-400"
         onClick={clearCart}
       >
         Checkout

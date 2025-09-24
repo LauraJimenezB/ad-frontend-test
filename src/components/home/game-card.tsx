@@ -35,7 +35,7 @@ const GameCard = ({ game }: GameCardProps) => {
           <span className="card-text ">${game.price.toFixed(2)}</span>
         </div>
         <button
-          className="btn text-xs"
+          className={`btn text-xs ${inCart && "bg-gray-200"}`}
           aria-label={
             inCart
               ? `Remove ${game.name} from cart`

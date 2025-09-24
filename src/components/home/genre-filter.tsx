@@ -38,7 +38,7 @@ const GenreFilter = ({ genres }: GenreFilterProps) => {
         id="genre-select"
         value={selectedGenre ?? ""}
         onChange={(e) => handleSelectChange(e.target.value)}
-        className={`px-3 py-2 text-sm hover:bg-gray-50 ${
+        className={`px-3 py-2 rounded-md text-sm hover:bg-primary-light ${
           !isAll ? "text-selected" : "text-unselected"
         }`}
       >
@@ -55,7 +55,7 @@ const GenreFilter = ({ genres }: GenreFilterProps) => {
       <span className="px-3 py-2 text-sm text-gray-700 font-thin">|</span>
 
       <button
-        className={`px-3 py-2 text-sm hover:bg-gray-50 ${
+        className={`px-3 py-2 rounded-md text-sm hover:bg-primary-light ${
           isAll ? "text-selected" : "text-unselected"
         }`}
         onClick={() => handleAllClick()}

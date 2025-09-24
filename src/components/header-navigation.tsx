@@ -17,7 +17,7 @@ export default function Header() {
 
         <Link
           href="/cart"
-          className="relative inline-flex items-center rounded-md px-3 py-2 hover:bg-gray-100 text-secondary-dark"
+          className="relative inline-flex items-center rounded-xl px-3 py-2 hover:bg-gray-100 text-secondary-dark"
           aria-label="Go to cart"
         >
           <Image src="/cart-icon.svg" alt="cart-icon" width={22} height={22} />

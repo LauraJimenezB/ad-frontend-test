@@ -12,7 +12,7 @@ const CartItem = ({
 }) => {
   return (
     <div className="cart-item flex w-full gap-4 py-4">
-      <div className="w-40 relative flex-shrink-0 self-stretch">
+      <div className="w-48 relative flex-shrink-0 self-stretch">
         <Image
           src={game.image}
           alt={game.name}
@@ -34,7 +34,7 @@ const CartItem = ({
           </div>
 
           <button
-            className="text-sm text-gray-500 hover:underline"
+            className="text-sm w-5 h-5 rounded-full text-secondary-light hover:bg-primary-light"
             onClick={() => handleRemove(game.id)}
           >
             ✕
