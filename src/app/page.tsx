@@ -1,4 +1,5 @@
 import { FilterSection } from "@/components/filter-section";
+import { GameCatalog } from "@/components/game-catalog";
 import { getGames } from "@/services/gameService";
 
 type Search = { genre?: string; page?: string };
@@ -12,6 +13,7 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
   return (
     <main className="flex flex-col items-center justify-between text-md">
       <FilterSection genres={gamesResponse.availableFilters} />
+      <GameCatalog games={gamesResponse.games} />
     </main>
   );
 }

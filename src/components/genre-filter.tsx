@@ -52,7 +52,7 @@ const GenreFilter = ({ genres }: GenreFilterProps) => {
         </>
       </select>
 
-      <span className="px-3 py-2 text-sm">|</span>
+      <span className="px-3 py-2 text-sm text-gray-700 font-thin">|</span>
 
       <button
         className={`px-3 py-2 text-sm hover:bg-gray-50 ${
