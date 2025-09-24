@@ -11,7 +11,7 @@ const CartItem = ({
   handleRemove: (id: string) => void;
 }) => {
   return (
-    <div className="cart-item flex w-full gap-4 border-b py-4">
+    <div className="cart-item flex w-full gap-4 py-4">
       <div className="w-40 relative flex-shrink-0 self-stretch">
         <Image
           src={game.image}

@@ -27,7 +27,7 @@ const OrderSummary = () => {
           <span>${total.toFixed(2)}</span>
         </div>
       </div>
-      <button className="inline-block btn-primary mt-6" onClick={clearCart}>
+      <button className="w-full btn-primary mt-6" onClick={clearCart}>
         Checkout
       </button>
     </aside>

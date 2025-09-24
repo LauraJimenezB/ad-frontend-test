@@ -7,7 +7,7 @@ const CartList = () => {
   const { items, removeItem } = useCart();
 
   return (
-    <div className="divide-y">
+    <div className="divide-y cart-list">
       {items.map((game) => (
         <CartItem key={game.id} game={game} handleRemove={removeItem} />
       ))}
