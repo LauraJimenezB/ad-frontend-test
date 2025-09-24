@@ -7,7 +7,7 @@ const CartHeader = () => {
   const { itemsCount } = useCart();
 
   return (
-    <section className="py-6 border-none">
+    <section className="border-none">
       <Link
         href="/"
         className="text-sm text-black-600 hover:text-secondary-light"

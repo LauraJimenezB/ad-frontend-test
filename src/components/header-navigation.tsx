@@ -3,8 +3,8 @@ import Image from "next/image";
 
 export default function Header() {
   return (
-    <header className="w-full border-b bg-primary-light">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
+    <header className="flex flex-col items-center border-b bg-primary-light">
+      <div className="flex w-full max-w-7xl pl-6 pr-4 sm:px-10 md:px-20 py-3 justify-between">
         <Link
           href="/"
           className="inline-flex items-center gap-2"

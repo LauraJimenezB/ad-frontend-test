@@ -38,7 +38,7 @@ const GenreFilter = ({ genres }: GenreFilterProps) => {
         id="genre-select"
         value={selectedGenre ?? ""}
         onChange={(e) => handleSelectChange(e.target.value)}
-        className={`px-3 py-2 rounded-md text-sm hover:bg-primary-light ${
+        className={`pl-0 pr-0 sm:px-3 sm:py-2 rounded-md text-sm hover:bg-primary-light ${
           !isAll ? "text-selected" : "text-unselected"
         }`}
       >

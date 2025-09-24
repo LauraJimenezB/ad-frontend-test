@@ -6,7 +6,7 @@ const FilterSection = ({ genres }: FilterSectionProps) => {
   return (
     <section>
       <h2 className="text-xl font-semibold text-primary">Top Sellers</h2>
-      <div className="w-full flex justify-end">
+      <div className="w-full flex justify-start sm:justify-end mt-5">
         <GenreFilter genres={genres} />
       </div>
     </section>
