@@ -29,7 +29,7 @@ const CartItem = ({ game }: { game: Game }) => {
 
           <button className="text-sm text-gray-500 hover:underline">✕</button>
         </div>
-        <div className=" flex justify-end mt-3 pr-12">
+        <div className=" flex justify-end mt-10 pr-12">
           <span className="font-medium">${game.price.toFixed(2)}</span>
         </div>
       </div>
