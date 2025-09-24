@@ -1,5 +1,6 @@
 import Footer from "@/components/footer";
 import HeaderNavigation from "@/components/header-navigation";
+import { CartProvider } from "@/context/cart-context";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -19,11 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body className={`${inter.className} min-h-dvh flex flex-col bg-white`}>
-        <div className="flex flex-col min-h-screen">
-          <HeaderNavigation />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-        </div>
+        <CartProvider>
+          <div className="flex flex-col min-h-screen">
+            <HeaderNavigation />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </div>
+        </CartProvider>
       </body>
     </html>
   );

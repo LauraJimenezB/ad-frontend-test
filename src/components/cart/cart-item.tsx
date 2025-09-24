@@ -3,7 +3,13 @@
 import Image from "next/image";
 import type { Game } from "@/types/game";
 
-const CartItem = ({ game }: { game: Game }) => {
+const CartItem = ({
+  game,
+  handleRemove,
+}: {
+  game: Game;
+  handleRemove: (id: string) => void;
+}) => {
   return (
     <div className="cart-item flex w-full gap-4 border-b py-4">
       <div className="w-40 relative flex-shrink-0 self-stretch">
@@ -27,7 +33,12 @@ const CartItem = ({ game }: { game: Game }) => {
             </p>
           </div>
 
-          <button className="text-sm text-gray-500 hover:underline">✕</button>
+          <button
+            className="text-sm text-gray-500 hover:underline"
+            onClick={() => handleRemove(game.id)}
+          >
+            ✕
+          </button>
         </div>
         <div className=" flex justify-end mt-10 pr-12">
           <span className="font-medium">${game.price.toFixed(2)}</span>

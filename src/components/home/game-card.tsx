@@ -2,12 +2,16 @@
 
 import Image from "next/image";
 import type { Game } from "@/types/game";
+import { useCart } from "@/context/cart-context";
 
 type GameCardProps = {
   game: Game;
 };
 
 const GameCard = ({ game }: GameCardProps) => {
+  const { isInCart, addToCart, removeItem } = useCart();
+  const inCart = isInCart(game.id);
+
   return (
     <article className="card flex flex-col">
       <div className="card-img aspect-[16/11] relative">
@@ -30,7 +34,12 @@ const GameCard = ({ game }: GameCardProps) => {
           <p className="card-text line-clamp-2">{game.name}</p>
           <span className="card-text ">${game.price.toFixed(2)}</span>
         </div>
-        <button className="btn text-xs">ADD TO CART</button>
+        <button
+          className="btn text-xs"
+          onClick={() => (inCart ? removeItem(game.id) : addToCart(game))}
+        >
+          {inCart ? "REMOVE" : "ADD TO CART"}
+        </button>
       </div>
     </article>
   );

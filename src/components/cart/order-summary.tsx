@@ -1,15 +1,17 @@
 "use client";
 
-import { Game } from "@/types/game";
-import Link from "next/link";
+import { useCart } from "@/context/cart-context";
 
-const OrderSummary = ({ count, items }: { count: number; items: Game[] }) => {
-  const total = 10;
+const OrderSummary = () => {
+  const { items, clearCart, itemsCount } = useCart();
+
+  const total = items.reduce((sum, game) => sum + game.price, 0);
+
   return (
     <aside>
       <div className="order-container">
         <h2 className="order-title">Order Summary</h2>
-        <span className="text-sm text-gray-500">{count} items</span>
+        <span className="text-sm text-gray-500">{itemsCount} items</span>
         <div className="order-list">
           {items?.map((item) => {
             return (
@@ -25,9 +27,9 @@ const OrderSummary = ({ count, items }: { count: number; items: Game[] }) => {
           <span>${total.toFixed(2)}</span>
         </div>
       </div>
-      <Link href="/" className="inline-block btn-primary mt-6">
+      <button className="inline-block btn-primary mt-6" onClick={clearCart}>
         Checkout
-      </Link>
+      </button>
     </aside>
   );
 };
