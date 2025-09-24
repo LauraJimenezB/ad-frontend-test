@@ -37,7 +37,7 @@ const CartItem = ({
             className="text-sm text-gray-500 hover:underline"
             onClick={() => handleRemove(game.id)}
           >
-            x
+            ✕
           </button>
         </div>
         <div className=" flex justify-end mt-10 pr-12">

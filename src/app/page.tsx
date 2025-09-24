@@ -13,6 +13,7 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
   return (
     <main className="flex flex-col items-center justify-between text-md">
       <FilterSection genres={gamesResponse.availableFilters} />
+      <hr className="w-full border-t text-primary-light" />
       <GameCatalog games={gamesResponse.games} />
     </main>
   );

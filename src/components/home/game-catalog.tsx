@@ -61,7 +61,7 @@ const GameCatalog = ({ games: initialGames = [] }: { games: Game[] }) => {
           <button
             onClick={loadMore}
             disabled={loading}
-            className="btn-primary px-6 mt-1 hover:bg-gray-400 disabled:opacity-50"
+            className="btn-primary bg-secondary-dark px-6 mt-1 hover:bg-gray-400 disabled:opacity-50"
           >
             {loading ? "Loading..." : "SEE MORE"}
           </button>
